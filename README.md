@@ -2,7 +2,7 @@
 
 Hi! Thanks for applying for the Junior Engineering Program at Culture Amp.
 
-What you'll find in this little directory is some code that was generated using the `bundle gem` command from the Bundler gem. If you're not sure what a gem is, you can find out more through these guides:
+What y ou'll find in this little directory is some code that was generated using the `bundle gem` command from the Bundler gem. If you're not sure what a gem is, you can find out more through these guides:
 
 * [What is a gem?](https://guides.rubygems.org/what-is-a-gem/)
 * [Make your own gem](https://guides.rubygems.org/make-your-own-gem/)

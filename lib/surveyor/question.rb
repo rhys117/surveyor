@@ -1,5 +1,9 @@
 module Surveyor
   class Question
-    # your code goes here
+    attr_reader :title
+
+    def initialize(options)
+      @title = options[:title]
+    end
   end
 end
