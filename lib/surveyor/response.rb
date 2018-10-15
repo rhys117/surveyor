@@ -4,14 +4,14 @@ module Surveyor
 
     attr_reader :email, :answers
 
-    def initialize(options)
-      raise "invalid email" unless VALID_EMAIL_REGEX.match options[:email]
+    def initialize(email:)
+      raise "invalid email" unless VALID_EMAIL_REGEX.match email
 
-      @email = options[:email]
+      @email = email
       @answers = []
     end
 
-    def add_answer(question, value)
+    def add_answer(question:, value:)
       answer = Answer.new(question: question, value: value)
       answer.valid_answer? ? @answers << answer : raise("invalid answer to question")
       answer

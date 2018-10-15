@@ -23,30 +23,30 @@ RSpec.describe Surveyor::Response do
 
   context 'add_answer' do
     it 'valid free text question value added to answers' do
-      subject.add_answer(free_text_question, 'Response')
+      subject.add_answer(question: free_text_question, value: 'Response')
       expect(subject.answers.count).to eq(1)
     end
 
     it 'invalid free text question value raises error' do
-      expect { subject.add_answer(free_text_question, 0) }.to raise_error("invalid answer to question")
+      expect { subject.add_answer(question: free_text_question, value: 0) }.to raise_error("invalid answer to question")
       expect(subject.answers.count).to eq(0)
     end
 
     it 'valid rating question value added to answers' do
-      subject.add_answer(rating_question, 1)
+      subject.add_answer(question: rating_question, value: 1)
       expect(subject.answers.count).to eq(1)
     end
 
     it 'invalid rating question value raises error' do
-      expect { subject.add_answer(rating_question, 6) }.to raise_error("invalid answer to question")
+      expect { subject.add_answer(question: rating_question, value: 6) }.to raise_error("invalid answer to question")
       expect(subject.answers.count).to eq(0)
     end
   end
 
   context 'answer to' do
     it 'should return matching answer' do
-      free_text_answer = subject.add_answer(free_text_question, "answer to free text question")
-      rating_answer = subject.add_answer(rating_question, 5)
+      free_text_answer = subject.add_answer(question: free_text_question, value: "answer to free text question")
+      rating_answer = subject.add_answer(question: rating_question, value: 5)
       expect(subject.answer_to(free_text_question)).to eq(free_text_answer)
       expect(subject.answer_to(rating_question)).to eq(rating_answer)
     end

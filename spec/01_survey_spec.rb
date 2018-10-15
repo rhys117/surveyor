@@ -51,10 +51,9 @@ RSpec.describe Surveyor::Survey do
       subject.questions.each do |question|
         subject.responses.each_with_index do |response, index|
           value = index > 5 ? 1 : 2
-          response.add_answer(question, value)
+          response.add_answer(question: question, value: value)
         end
       end
-
       expected = { 1 => 4, 2 => 6, 3 => 0, 4 => 0, 5 => 0 }
       expect(subject.ratings_answer_breakdown(subject.questions.first)).to eq(expected)
     end
