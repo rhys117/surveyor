@@ -35,6 +35,17 @@ module Surveyor
       results
     end
 
+    ### - Filling Time Start - ###
+
+    def ratings_scale_count(question:, scale:)
+      return nil unless question.is_a?(RatingQuestion)
+
+      range = scale_range(scale)
+      find_questions_answers(question).select { |answer| range.cover?(answer.value) }.length
+    end
+
+    ### - Filling Time End - ###
+
     private
 
     def find_questions_answers(question)
@@ -42,5 +53,22 @@ module Surveyor
         response.answer_to(question)
       end.compact
     end
+
+    ### - Filling Time Start - ###
+
+    def scale_range(target)
+      case target
+      when :low
+        (1..2)
+      when :neutral
+        (3..3)
+      when :high
+        (4..5)
+      else
+        raise 'invalid scale'
+      end
+    end
+
+    ### - Filling Time End - ###
   end
 end

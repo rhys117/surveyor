@@ -1,0 +1,5 @@
+- Downcase email address on response initialization and searching (important for searching for matches)
+- answer to match by question object? - questions with the same text
+
+questions
+- version of rails?

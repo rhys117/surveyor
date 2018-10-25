@@ -63,4 +63,41 @@ RSpec.describe Surveyor::Survey do
       expect(subject.ratings_answer_breakdown(dummy_question)).to eq(nil)
     end
   end
+
+  ### - Filling Time Start - ###
+
+  context "scale ratings count" do
+    before do
+      10.times { |num| subject.add_response(Surveyor::Response.new(email: "#{num}@example.com")) }
+      10.times { |num| subject.add_question(Surveyor::RatingQuestion.new(title: num)) }
+      subject.questions.each do |question|
+        subject.responses.each_with_index do |response, index|
+          value = index > 5 ? 1 : 3
+          response.add_answer(question: question, value: value)
+        end
+      end
+    end
+
+    it 'should count low correctly' do
+      expect(subject.ratings_scale_count(question: subject.questions.first, scale: :low)).to eq(4)
+    end
+
+    it 'should count neautural correctly' do
+      expect(subject.ratings_scale_count(question: subject.questions.first, scale: :neutral)).to eq(6)
+    end
+
+    it 'should count neautural correctly' do
+      expect(subject.ratings_scale_count(question: subject.questions.first, scale: :high)).to eq(0)
+    end
+
+    it 'should return nil if not ratings question' do
+      expect(subject.ratings_scale_count(question: Surveyor::FreeTextQuestion.new(title: 'Something'), scale: :low)).to eq(nil)
+    end
+
+    it 'should raise error if invalid scale' do
+      expect { subject.ratings_scale_count(question: subject.questions.first, scale: :none) }.to raise_error('invalid scale')
+    end
+  end
+
+  ### - Filling Time End - ###
 end
