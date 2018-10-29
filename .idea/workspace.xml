@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="01cdd50f-f1c4-49c9-b63a-bbcccac4e3c0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/live_coding_instructions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/surveyor/response.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/surveyor/response.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/surveyor/survey.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/surveyor/survey.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/01_survey_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/01_survey_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/05_response_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/05_response_spec.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,29 +24,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="survey.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="survey.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/surveyor/survey.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="43" column="7" lean-forward="true" selection-start-line="43" selection-start-column="7" selection-end-line="43" selection-end-column="7" />
+            <state relative-caret-position="502">
+              <caret line="46" column="30" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="05_response_spec.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spec/05_response_spec.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="39" column="48" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="01_survey_spec.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="01_survey_spec.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spec/01_survey_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
-              <caret line="75" column="76" selection-start-line="75" selection-start-column="76" selection-end-line="75" selection-end-column="76" />
+            <state relative-caret-position="468">
+              <caret line="92" column="56" selection-start-line="92" selection-start-column="56" selection-end-line="92" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -66,6 +53,7 @@
       <find>options</find>
       <find>raise</find>
       <find>breakdown</find>
+      <find>find_questions_answers</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -90,8 +78,8 @@
         <option value="$PROJECT_DIR$/lib/surveyor/response.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/live_coding_instructions.md" />
-        <option value="$PROJECT_DIR$/spec/01_survey_spec.rb" />
         <option value="$PROJECT_DIR$/lib/surveyor/survey.rb" />
+        <option value="$PROJECT_DIR$/spec/01_survey_spec.rb" />
       </list>
     </option>
   </component>
@@ -198,12 +186,12 @@
       <workItem from="1540163617638" duration="448000" />
       <workItem from="1540374191192" duration="2660000" />
       <workItem from="1540431723469" duration="7542000" />
-      <workItem from="1540781355335" duration="418000" />
+      <workItem from="1540781355335" duration="949000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55858000" />
+    <option name="totallyTimeSpent" value="56389000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="877" extended-state="0" />
@@ -567,13 +555,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/01_survey_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="75" column="76" selection-start-line="75" selection-start-column="76" selection-end-line="75" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/05_response_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -588,6 +569,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/surveyor/survey.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="46" column="30" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/surveyor/answer.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -595,10 +583,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/surveyor/survey.rb">
+    <entry file="file://$PROJECT_DIR$/spec/01_survey_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="43" column="7" lean-forward="true" selection-start-line="43" selection-start-column="7" selection-end-line="43" selection-end-column="7" />
+        <state relative-caret-position="468">
+          <caret line="92" column="56" selection-start-line="92" selection-start-column="56" selection-end-line="92" selection-end-column="56" />
         </state>
       </provider>
     </entry>

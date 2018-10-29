@@ -29,18 +29,39 @@ module Surveyor
 
       results = { 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0 }
 
-      matching_answers = find_questions_answers(question, segments)
+      matching_answers = find_questions_answers(question: question, segments: segments)
       matching_answers.each { |answer| results[answer.value] += 1 }
 
       results
     end
 
+    def ratings_scale_count(question:, scale:)
+      return nil unless question.is_a?(RatingQuestion)
+
+      range = scale_range(scale)
+      find_questions_answers(question: question).select { |answer| range.cover?(answer.value) }.length
+    end
+
     private
 
-    def find_questions_answers(question, segments)
+    def find_questions_answers(question:, segments: [])
       @responses.map do |response|
         (segments - response.segments).empty? ? response.answer_to(question) : nil
       end.compact
     end
+
+    def scale_range(target)
+      case target
+      when :low
+        (1..2)
+      when :neutral
+        (3..3)
+      when :high
+        (4..5)
+      else
+        raise 'invalid scale'
+      end
+    end
+
   end
 end
