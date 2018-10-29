@@ -3,13 +3,14 @@ module Surveyor
     VALID_EMAIL_REGEX = %r(\A[a-zA-Z0-9.!\#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])
                            ?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\z)x
 
-    attr_reader :email, :answers
+    attr_reader :email, :answers, :segments
 
-    def initialize(email:)
+    def initialize(email:, segments: [])
       raise "invalid email" unless VALID_EMAIL_REGEX.match email
 
       @email = email
       @answers = []
+      @segments = segments
     end
 
     def add_answer(question:, value:)

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Surveyor::Response do
-  subject { described_class.new(email: "example@example.com") }
+  subject { described_class.new(email: "example@example.com", segments: %w(Male Melbourne)) }
   free_text_question = Surveyor::FreeTextQuestion.new(title: "Free text question")
   rating_question = Surveyor::RatingQuestion.new(title: "Rating question")
 
@@ -11,6 +11,10 @@ RSpec.describe Surveyor::Response do
 
   it 'has answers array' do
     expect(subject.answers).to eq([])
+  end
+
+  it 'has an segments array' do
+    expect(subject.segments).to eq(%w(Male Melbourne))
   end
 
   it 'invalid email raises error' do
