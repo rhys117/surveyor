@@ -20,7 +20,6 @@ module Surveyor
     end
 
     def answer_to(question)
-      # Depending on use cases matching by Question objects might be more appropriate
       @answers.find { |answer| answer.question.title == question.title }
     end
   end

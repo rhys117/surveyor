@@ -17,11 +17,11 @@ module Surveyor
     end
 
     def find_users_response(email)
-      @responses.detect { |r| r.email == email }
+      @responses.detect { |response| response.email.casecmp(email).zero? }
     end
 
     def user_responded?(email)
-      @responses.any? { |response| response.email == email }
+      @responses.any? { |response| response.email.casecmp(email).zero? }
     end
 
     def ratings_answer_breakdown(question:, segments: [])
@@ -62,6 +62,5 @@ module Surveyor
         raise 'invalid scale'
       end
     end
-
   end
 end
