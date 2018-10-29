@@ -148,7 +148,7 @@ RSpec.describe Surveyor::Survey do
           response.add_answer(question: question, value: value)
         end
       end
-      expected = [6, 10]
+      expected = 6
       expect(subject.multiple_choice_correct(question: subject.questions.last)).to eq(expected)
     end
   end
@@ -173,6 +173,21 @@ RSpec.describe Surveyor::Survey do
       end
       expected = 60.0
       expect(subject.percent_correct(question: subject.questions.last)).to eq(expected)
+    end
+  end
+
+  context "number of answers to" do
+    it 'should give appropriate response to segments' do
+      question = Surveyor::RatingQuestion.new(title: 'Q')
+      subject.add_response(Surveyor::Response.new(email: "male@example.com", segments: %w(Male Melbourne)))
+      subject.add_response(Surveyor::Response.new(email: "female@example.com", segments: %w(Female Melbourne)))
+      subject.add_question(question)
+
+      subject.responses.first.add_answer(question: question, value: 1)
+      subject.responses.last.add_answer(question: question, value: 1)
+
+      expected = 1
+      expect(subject.number_of_answers_to(question: question, segments: %w(Male Melbourne))).to eq(expected)
     end
   end
 end

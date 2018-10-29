@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="01cdd50f-f1c4-49c9-b63a-bbcccac4e3c0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/surveyor/answer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/surveyor/answer.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/surveyor/survey.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/surveyor/survey.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/01_survey_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/01_survey_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/05_response_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/05_response_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/06_answer_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/06_answer_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/07_multiple_choice_question_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/07_multiple_choice_question_spec.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,8 +27,8 @@
       <file leaf-file-name="01_survey_spec.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spec/01_survey_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1022">
-              <caret line="162" column="7" lean-forward="true" selection-start-line="162" selection-start-column="7" selection-end-line="162" selection-end-column="7" />
+            <state relative-caret-position="1106">
+              <caret line="189" column="41" selection-start-line="189" selection-start-column="41" selection-end-line="189" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -40,8 +36,8 @@
       <file leaf-file-name="survey.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/surveyor/survey.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="831">
-              <caret line="71" column="39" selection-start-line="71" selection-start-column="39" selection-end-line="71" selection-end-column="39" />
+            <state relative-caret-position="874">
+              <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
             </state>
           </provider>
         </entry>
@@ -203,12 +199,12 @@
       <workItem from="1540374191192" duration="2660000" />
       <workItem from="1540431723469" duration="7542000" />
       <workItem from="1540781355335" duration="1639000" />
-      <workItem from="1540791869512" duration="8839000" />
+      <workItem from="1540791869512" duration="9990000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65918000" />
+    <option name="totallyTimeSpent" value="67069000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1415" height="1417" extended-state="0" />
@@ -595,15 +591,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/surveyor/survey.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="831">
-          <caret line="71" column="39" selection-start-line="71" selection-start-column="39" selection-end-line="71" selection-end-column="39" />
+        <state relative-caret-position="874">
+          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/01_survey_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1022">
-          <caret line="162" column="7" lean-forward="true" selection-start-line="162" selection-start-column="7" selection-end-line="162" selection-end-column="7" />
+        <state relative-caret-position="1106">
+          <caret line="189" column="41" selection-start-line="189" selection-start-column="41" selection-end-line="189" selection-end-column="41" />
         </state>
       </provider>
     </entry>
