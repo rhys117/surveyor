@@ -79,7 +79,7 @@ RSpec.describe Surveyor::Survey do
     end
   end
 
-  context "ratings answer breakdown" do
+  context "ratings breakdown" do
     it 'should count correctly' do
       10.times { |num| subject.add_response(Surveyor::Response.new(email: "#{num}@example.com")) }
       10.times { |num| subject.add_question(Surveyor::RatingQuestion.new(title: num)) }
@@ -90,12 +90,12 @@ RSpec.describe Surveyor::Survey do
         end
       end
       expected = { 1 => 4, 2 => 6, 3 => 0, 4 => 0, 5 => 0 }
-      expect(subject.ratings_answer_breakdown(question: subject.questions.first)).to eq(expected)
+      expect(subject.ratings_breakdown(question: subject.questions.first)).to eq(expected)
     end
 
     it 'should return nil if not ratings question' do
       dummy_question = double(:FreeTextQuestion, title: 'Test title')
-      expect(subject.ratings_answer_breakdown(question: dummy_question)).to eq(nil)
+      expect(subject.ratings_breakdown(question: dummy_question)).to eq(nil)
     end
 
     it 'should give appropriate response to segments' do
@@ -108,7 +108,26 @@ RSpec.describe Surveyor::Survey do
       subject.responses.last.add_answer(question: question, value: 1)
 
       expected = { 1 => 1, 2 => 0, 3 => 0, 4 => 0, 5 => 0 }
-      expect(subject.ratings_answer_breakdown(question: question, segments: %w(Male Melbourne))).to eq(expected)
+      expect(subject.ratings_breakdown(question: question, segments: %w(Male Melbourne))).to eq(expected)
+    end
+  end
+
+  context "multiple choice breakdown" do
+    items = %w(first second third)
+    correct_answer = 'second'
+
+    it 'should count correctly' do
+      10.times { |num| subject.add_response(Surveyor::Response.new(email: "#{num}@example.com")) }
+      10.times { |num| subject.add_question(Surveyor::MultipleChoiceQuestion.new(title: num, items: items, correct_answer: correct_answer)) }
+      subject.questions.each do |question|
+        subject.responses.each_with_index do |response, index|
+          value = index > 5 ? 'first' : 'second'
+          response.add_answer(question: question, value: value)
+        end
+      end
+      expected = { 'first' => 4, 'second' => 6, 'third' => 0 }
+      expect(subject.multiple_choice_breakdown(question: subject.questions.last)).to eq(expected)
+
     end
   end
 end

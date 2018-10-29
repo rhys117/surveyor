@@ -1,3 +1,4 @@
+require 'pry'
 module Surveyor
   class Survey
     attr_reader :name, :questions, :responses
@@ -24,7 +25,7 @@ module Surveyor
       @responses.any? { |response| response.email.casecmp(email).zero? }
     end
 
-    def ratings_answer_breakdown(question:, segments: [])
+    def ratings_breakdown(question:, segments: [])
       return nil unless question.is_a?(RatingQuestion)
 
       results = { 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0 }
@@ -35,11 +36,23 @@ module Surveyor
       results
     end
 
-    def ratings_scale_count(question:, scale:)
+    def multiple_choice_breakdown(question:, segments: [])
+      return nil unless question.is_a?(MultipleChoiceQuestion)
+
+      results = {}
+      question.items.each { |item| results[item] = 0 }
+
+      matching_answers = find_questions_answers(question: question, segments: segments)
+      matching_answers.each { |answer| results[answer.value] += 1 }
+
+      results
+    end
+
+    def ratings_scale_count(question:, scale:, segments: [])
       return nil unless question.is_a?(RatingQuestion)
 
       range = scale_range(scale)
-      find_questions_answers(question: question).select { |answer| range.cover?(answer.value) }.length
+      find_questions_answers(question: question, segments: segments).select { |answer| range.cover?(answer.value) }.length
     end
 
     private
