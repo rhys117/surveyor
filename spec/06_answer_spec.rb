@@ -36,4 +36,25 @@ RSpec.describe Surveyor::Answer do
       expect(invalid.valid_answer?).to eq(false)
     end
   end
+
+  context 'correct?' do
+    correct_answer = 'second'
+    question = Surveyor::MultipleChoiceQuestion.new(title: 'q', items: %w(first second), correct_answer: correct_answer)
+
+    it 'returns nil when not a multiple choice question' do
+      invalid_question = Surveyor::Question.new(title: 'q')
+      invalid_answer = Surveyor::Answer.new(question: invalid_question, value: 'something')
+      expect(invalid_answer.correct?).to eq(nil)
+    end
+
+    it 'returns true when answer correct' do
+      answer = Surveyor::Answer.new(question: question, value: correct_answer)
+      expect(answer.correct?).to eq(true)
+    end
+
+    it 'returns false when answer incorrect' do
+      answer = Surveyor::Answer.new(question: question, value: 'first')
+      expect(answer.correct?).to eq(false)
+    end
+  end
 end

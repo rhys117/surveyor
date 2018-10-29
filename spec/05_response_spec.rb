@@ -4,6 +4,7 @@ RSpec.describe Surveyor::Response do
   subject { described_class.new(email: "example@example.com", segments: %w(Male Melbourne)) }
   free_text_question = Surveyor::FreeTextQuestion.new(title: "Free text question")
   rating_question = Surveyor::RatingQuestion.new(title: "Rating question")
+  multiple_choice_question = Surveyor::MultipleChoiceQuestion.new(title: 'Multiple choice question', items: %w(first second), correct_answer: 'first')
 
   it 'has an email' do
     expect(subject.email).to eq("example@example.com")
@@ -25,14 +26,16 @@ RSpec.describe Surveyor::Response do
     end
   end
 
-  context 'add_answer' do
+  context 'add answer' do
+    error_response = 'invalid answer to question'
+
     it 'valid free text question value added to answers' do
       subject.add_answer(question: free_text_question, value: 'Response')
       expect(subject.answers.count).to eq(1)
     end
 
     it 'invalid free text question value raises error' do
-      expect { subject.add_answer(question: free_text_question, value: 0) }.to raise_error("invalid answer to question")
+      expect { subject.add_answer(question: free_text_question, value: 0) }.to raise_error(error_response)
       expect(subject.answers.count).to eq(0)
     end
 
@@ -42,7 +45,17 @@ RSpec.describe Surveyor::Response do
     end
 
     it 'invalid rating question value raises error' do
-      expect { subject.add_answer(question: rating_question, value: 6) }.to raise_error("invalid answer to question")
+      expect { subject.add_answer(question: rating_question, value: 6) }.to raise_error(error_response)
+      expect(subject.answers.count).to eq(0)
+    end
+
+    it 'valid multiple choice question added to answers' do
+      subject.add_answer(question: multiple_choice_question, value: 'first')
+      expect(subject.answers.count).to eq(1)
+    end
+
+    it 'invalid multiple choice question raises error' do
+      expect { subject.add_answer(question: multiple_choice_question, value: 'none') }.to raise_error(error_response)
       expect(subject.answers.count).to eq(0)
     end
   end

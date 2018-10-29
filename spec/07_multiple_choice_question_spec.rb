@@ -3,9 +3,10 @@ require 'spec_helper'
 RSpec.describe Surveyor::MultipleChoiceQuestion do
   question_tile = "Multiple choice question"
   items = %w(first second third fourth)
+  correct_answer = 'second'
 
   subject do
-    described_class.new(title: question_tile, items: items, correct_answer: 'second')
+    described_class.new(title: question_tile, items: items, correct_answer: correct_answer)
   end
 
   it 'has a question' do
@@ -20,7 +21,7 @@ RSpec.describe Surveyor::MultipleChoiceQuestion do
     it 'raises error when has duplicate item' do
       invalid_items = %w(first first second third fourth)
       expect do
-        described_class.new(title: question_tile, items: invalid_items, correct_answer: 'second')
+        described_class.new(title: question_tile, items: invalid_items, correct_answer: correct_answer)
       end.to raise_error('duplicate answer in items')
     end
   end

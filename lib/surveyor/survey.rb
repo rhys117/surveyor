@@ -55,6 +55,23 @@ module Surveyor
       find_questions_answers(question: question, segments: segments).select { |answer| range.cover?(answer.value) }.length
     end
 
+    def multiple_choice_correct(question: question, segments: [])
+      return nil unless question.is_a?(MultipleChoiceQuestion)
+
+      matching_answers = find_questions_answers(question: question, segments: segments)
+      total = matching_answers.length
+      correctly_answered = matching_answers.select(&:correct?).length
+
+      [correctly_answered, total]
+    end
+
+    def percent_correct(question:, segments: [])
+      return nil unless question.is_a?(MultipleChoiceQuestion)
+
+      correct, total = multiple_choice_correct(question: question, segments: segments)
+      (correct.to_f / total.to_f) * 100
+    end
+
     private
 
     def find_questions_answers(question:, segments: [])

@@ -127,7 +127,52 @@ RSpec.describe Surveyor::Survey do
       end
       expected = { 'first' => 4, 'second' => 6, 'third' => 0 }
       expect(subject.multiple_choice_breakdown(question: subject.questions.last)).to eq(expected)
+    end
+  end
 
+  context "multiple choice correct" do
+    items = %w(first second)
+    correct_answer = 'second'
+
+    it 'should return nil unless multiple choice question' do
+      question = Surveyor::Question.new(title: 'q')
+      expect(subject.multiple_choice_correct(question: question)).to eq(nil)
+    end
+
+    it 'should count correctly' do
+      10.times { |num| subject.add_response(Surveyor::Response.new(email: "#{num}@example.com")) }
+      10.times { |num| subject.add_question(Surveyor::MultipleChoiceQuestion.new(title: num, items: items, correct_answer: correct_answer)) }
+      subject.questions.each do |question|
+        subject.responses.each_with_index do |response, index|
+          value = index > 5 ? 'first' : 'second'
+          response.add_answer(question: question, value: value)
+        end
+      end
+      expected = [6, 10]
+      expect(subject.multiple_choice_correct(question: subject.questions.last)).to eq(expected)
+    end
+  end
+
+  context "percent correct" do
+    items = %w(first second)
+    correct_answer = 'second'
+
+    it 'should return nil unless multiple choice question' do
+      question = Surveyor::Question.new(title: 'q')
+      expect(subject.multiple_choice_correct(question: question)).to eq(nil)
+    end
+
+    it 'should give correct percent in float' do
+      10.times { |num| subject.add_response(Surveyor::Response.new(email: "#{num}@example.com")) }
+      10.times { |num| subject.add_question(Surveyor::MultipleChoiceQuestion.new(title: num, items: items, correct_answer: correct_answer)) }
+      subject.questions.each do |question|
+        subject.responses.each_with_index do |response, index|
+          value = index > 5 ? 'first' : 'second'
+          response.add_answer(question: question, value: value)
+        end
+      end
+      expected = 60.0
+      expect(subject.percent_correct(question: subject.questions.last)).to eq(expected)
     end
   end
 end

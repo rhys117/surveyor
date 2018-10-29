@@ -12,5 +12,11 @@ module Surveyor
     def valid_answer?
       @question.valid_answer?(@value)
     end
+
+    def correct?
+      return nil unless question.is_a?(MultipleChoiceQuestion)
+
+      @value == @question.correct_answer
+    end
   end
 end
